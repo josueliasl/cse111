@@ -1,5 +1,14 @@
 import random
 
+def main():
+   quantities = [1, 2, 3, 4, 5, 6]
+   tenses = ['present', 'past', 'future']
+   for _ in range(6):
+       quantity = random.choice(quantities)
+       tense = random.choice(tenses)
+       sentence = make_sentence(quantity, tense)
+       print(sentence)
+
 def get_determiner(quantity):
   """Return a randomly chosen determiner. A determiner is
   a word like "the", "a", "one", "some", "many".
@@ -81,29 +90,65 @@ def get_verb(quantity, tense):
   word = random.choice(words)
   return word
 
-
 def make_sentence(quantity, tense):
   """Build and return a sentence with three words:
   a determiner, a noun, and a verb. The grammatical
   quantity of the determiner and noun will match the
   number in the quantity parameter. The grammatical
   quantity and tense of the verb will match the number
-  and tense in the quantity and tense parameters.
+  and tense in the quantity and tense param eters.
   """
   determiner = get_determiner(quantity)
   noun = get_noun(quantity)
   verb = get_verb(quantity, tense)
-  sentence =  determiner + ' ' + noun + ' ' + verb
+  adverb = get_adverb()
+  preposition = get_prepositional_phrase(quantity)
+  sentence = determiner + ' ' + noun + ' ' + adverb + ' ' + verb + ' ' + preposition
   return sentence
 
-def main():
-   quantities = [1, 2, 3, 4, 5, 6]
-   tenses = ['present', 'past', 'future']
-   for sentence in range(6):
-       quantity = random.choice(quantities)
-       tense = random.choice(tenses)
-       sentence = make_sentence(quantity, tense)
-       print(sentence)
+def get_preposition():
+  """Return a randomly chosen preposition
+  from this list of prepositions:
+      "about", "above", "across", "after", "along",
+      "around", "at", "before", "behind", "below",
+      "beyond", "by", "despite", "except", "for",
+      "from", "in", "into", "near", "of",
+      "off", "on", "onto", "out", "over",
+      "past", "to", "under", "with", "without"
+  Return: a randomly chosen preposition.
+  """
+  prepositions = ["about", "above", "across", "after", "along", "around", "at", "before", "behind", "below", "beyond", "by", "despite", "except", "for", "from", "in", "into", "near", "of", "off", "on", "onto", "out", "over", "past", "to", "under", "with", "without"]
+  preposition = random.choice(prepositions)
+  return preposition
+
+def get_prepositional_phrase(quantity):
+  """Build and return a prepositional phrase composed
+  of three words: a preposition, a determiner, and a
+  noun by calling the get_preposition, get_determiner,
+  and get_noun functions.
+  Parameter
+      quantity: an integer that determines if the
+          determiner and noun in the prepositional
+          phrase returned from this function should
+          be single or pluaral.
+  Return: a prepositional phrase.
+  """
+  preposition = get_preposition()
+  determiner = get_determiner(quantity)
+  noun = get_noun(quantity) 
+  preposition_determiner_noun = preposition + ' ' + determiner + ' ' + noun 
+  return preposition_determiner_noun
+
+#Creativity: Adding an adverb to the sentences
+def get_adverb():
+  """This function will return a randomly chosen adverb
+    to describe how the action is done. Examples of adverbs include:
+    "quickly", "slowly", "happily", "sadly", "carefully", "eagerly",
+    "gracefully", "lazily", "loudly", "softly"
+  The adverb will modify the verb, adding more detail to the sentence."""
+  adverbs = ["quickly", "slowly", "happily", "sadly", "carefully", "eagerly", "gracefully", "lazily", "loudly", "softly"]
+  adverb = random.choice(adverbs)
+  return adverb
 
 main()
    
