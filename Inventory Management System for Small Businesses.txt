@@ -1,0 +1,25 @@
+Inventory Management System for Small Businesses
+
+Description:
+This program addresses the challenge of managing inventory in small businesses by tracking products, updating stock levels, and generating sales reports. It will streamline the process of adding/removing products and monitoring inventory, reducing errors and improving efficiency.
+
+Learning Objectives:
+Develop functions for product management.
+Implement file handling for data storage (using CSV files).
+Write test functions using pytest.
+Create a real-world application to solve a practical problem.
+
+Modules Used:
+csv: For reading and writing product data to files.
+pytest: For testing functions to ensure correctness.
+os: For file and directory management.
+
+Function Names:
+add_product()
+remove_product()
+update_stock()
+generate_report()
+
+Test Functions:
+test_add_product()
+test_update_stock()
